@@ -1,4 +1,4 @@
-import React, { FC, useState, ReactElement, useEffect } from 'react';
+import React, {  useState, ReactElement, useEffect } from 'react';
 import {
   View,
   Text,
@@ -7,32 +7,28 @@ import {
   TextStyle,
   ScrollView,
 } from 'react-native';
-
-export interface StepperProps {
-  active: number;
-  content: ReactElement[];
-  onNext: Function;
-  onBack: Function;
-  onFinish: Function;
-  wrapperStyle?: ViewStyle;
-  stepStyle?: ViewStyle;
-  stepLine?:ViewStyle;
-  stepTextStyle?: TextStyle;
-  buttonStyle?: ViewStyle;
-  buttonTextStyle?: TextStyle;
-  showButton?: boolean;
+import PropTypes from 'prop-types';
+const I18N = {
+  'back': 'Back',
+  'next': 'Next',
+  'finish': 'Finish'
+}
+const ICONS = {
+  "PENDING":"?",
+  "SUCCESS": "&#10003", 
 }
 
-const search = (keyName: number, myArray: number[]): boolean => {
+const search = (keyName, myArray) => {
   return myArray.some((val) => val === keyName);
 };
 
-const Stepper: FC<StepperProps> = (props) => {
+const Stepper = (props) => {
   const {
     active,
     content,
     onBack,
     onNext,
+   
     onFinish,
     wrapperStyle,
     stepLine,
@@ -41,9 +37,13 @@ const Stepper: FC<StepperProps> = (props) => {
     buttonStyle,
     buttonTextStyle,
     showButton = true,
+    pendingState = true,
+    stepsIcons = {}
   } = props;
-  const [step, setStep] = useState<number[]>([0]);
-  const pushData = (val: number) => {
+ let  icons  = props.icons || ICONS;
+  let i18n  = props.i18n || I18N;
+  const [step, setStep] = useState([0]);
+  const pushData = (val) => {
     setStep((prev) => [...prev, val]);
   };
 
@@ -108,7 +108,7 @@ const Stepper: FC<StepperProps> = (props) => {
                       stepTextStyle,
                     ]}
                   >
-                    &#10003;
+                   { pendingState? icons["PENDING"]: icons["SUCCESS"] }
                   </Text>
                 ) : (
                   <Text
@@ -119,7 +119,7 @@ const Stepper: FC<StepperProps> = (props) => {
                       stepTextStyle,
                     ]}
                   >
-                    {i + 1}
+                    {stepsIcons[i + 1] || i + 1}
                   </Text>
                 )}
               </View>
@@ -155,7 +155,7 @@ const Stepper: FC<StepperProps> = (props) => {
                 onBack();
               }}
             >
-              <Text style={[{ color: 'white' }, buttonTextStyle]}>Back</Text>
+              <Text style={[{ color: 'white' }, buttonTextStyle]}>{i18n?.back }</Text>
             </TouchableOpacity>
           )}
           {content.length - 1 !== active && (
@@ -175,7 +175,7 @@ const Stepper: FC<StepperProps> = (props) => {
                 onNext();
               }}
             >
-              <Text style={[{ color: 'white' }, buttonTextStyle]}>Next</Text>
+              <Text style={[{ color: 'white' }, buttonTextStyle]}>{i18n?.next }</Text>
             </TouchableOpacity>
           )}
           {content.length - 1 === active && (
@@ -191,7 +191,7 @@ const Stepper: FC<StepperProps> = (props) => {
               ]}
               onPress={() => onFinish()}
             >
-              <Text style={[{ color: 'white' }, buttonTextStyle]}>Finish</Text>
+              <Text style={[{ color: 'white' }, buttonTextStyle]}>{i18n?.finish }</Text>
             </TouchableOpacity>
           )}
         </View>
@@ -199,5 +199,23 @@ const Stepper: FC<StepperProps> = (props) => {
     </View>
   );
 };
+Stepper.prototype = {
+  active: PropTypes.number.isRequired,
+  content: PropTypes.arrayOf(ReactElement),
+  onNext: PropTypes.func.isRequired,
+  onBack: PropTypes.func.isRequired,
+  onFinish: PropTypes.func.isRequired,
+  i18n: PropTypes.object,
+  icons: PropTypes.object,
+  wrapperStyle: PropTypes.instanceOf(ViewStyle),
+  stepStyle: PropTypes.instanceOf(ViewStyle),
+  stepLine: PropTypes.instanceOf(ViewStyle),
+  stepTextStyle: PropTypes.instanceOf(TextStyle),
+  buttonStyle: PropTypes.instanceOf(ViewStyle),
+  buttonTextStyle: PropTypes.instanceOf(TextStyle),
+  showButton: PropTypes.bool,
+  pendingState: PropTypes.bool,
+  stepsIcons: PropTypes.object
+}
 
 export default Stepper;

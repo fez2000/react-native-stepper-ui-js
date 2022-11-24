@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { Alert, Text, View } from 'react-native';
 import Stepper from 'react-native-stepper-ui';
+import PropTypes from 'prop-types';
 
-const MyComponent = (props: { title: string }) => {
+const MyComponent = (props) => {
   return (
     <View>
       <Text>{props.title}</Text>
     </View>
   );
 };
-
+MyComponent.prototype = {
+  "title": PropTypes.string,
+}
 const content = [
   <MyComponent title="Component 1" />,
   <MyComponent title="Component 2" />,
