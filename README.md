@@ -1,9 +1,9 @@
-# react-native-stepper-ui
+# react-native-stepper-ui-js
 
 [![Platform](https://img.shields.io/badge/platform-react--native-lightgrey.svg)](http://facebook.github.io/react-native/)
-[![Version](http://img.shields.io/npm/v/react-native-stepper-ui.svg)](https://www.npmjs.com/package/react-native-stepper-ui)
-[![Download](http://img.shields.io/npm/dm/react-native-stepper-ui.svg)](https://www.npmjs.com/package/react-native-stepper-ui)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.github.com/danilrafiqi/react-native-stepper-ui/master/LICENSE)
+[![Version](http://img.shields.io/npm/v/react-native-stepper-ui.svg)](https://www.npmjs.com/package/react-native-stepper-ui-js)
+[![Download](http://img.shields.io/npm/dm/react-native-stepper-ui.svg)](https://www.npmjs.com/package/react-native-stepper-ui-js)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.github.com/danilrafiqi/react-native-stepper-ui-js/master/LICENSE)
 
 A simple and fully customizable React Native component to create stepper ui.
 
@@ -13,7 +13,7 @@ A simple and fully customizable React Native component to create stepper ui.
 
 ## Table of contents
 
-- [react-native-stepper-ui](#react-native-stepper-ui)
+- [react-native-stepper-ui-js](#react-native-stepper-ui-js)
   - [Table of contents](#table-of-contents)
   - [Example](#example)
   - [Installation](#installation)
@@ -31,13 +31,13 @@ A simple and fully customizable React Native component to create stepper ui.
 If using yarn:
 
 ```
-yarn add react-native-stepper-ui
+yarn add react-native-stepper-ui-js
 ```
 
 If using npm:
 
 ```
-npm i react-native-stepper-ui
+npm i react-native-stepper-ui-js
 ```
 
 ## Usage
@@ -46,7 +46,7 @@ npm i react-native-stepper-ui
 import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 
-import Stepper from 'react-native-stepper-ui';
+import Stepper from 'react-native-stepper-ui-js';
 
 const MyComponent = (props) => {
   return (
