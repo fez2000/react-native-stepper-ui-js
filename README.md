@@ -96,3 +96,8 @@ export default App;
 | `buttonStyle?`     |   ViewStyle    | Button component style                                 | `{ padding: 10, borderRadius: 4, alignSelf: 'flex-start', marginRight: 10, backgroundColor: '#a1a1a1'}`                             |
 | `buttonTextStyle?` |   TextStyle    | Button Text component style                            | `{color: 'white'}`                                                                                                                  |
 | `showButton?`      |    boolean     | show button                                            | `true`                                                                                                                              |
+
+| `i18n` | object | button lang | `{'back': 'Back','next': 'Next','finish': 'Finish'` |
+| `icons` | object | button set icona | `{ "PENDING":"?", "SUCCESS": "&#10003", }` |
+| `pendingState` | boolean | enable pending icon on active step | `true` |
+| `stepsIcons` | object | step icon default number | `{"1":1}` |

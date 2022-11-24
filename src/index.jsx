@@ -108,7 +108,7 @@ const Stepper = (props) => {
                       stepTextStyle,
                     ]}
                   >
-                   { pendingState? icons["PENDING"]: icons["SUCCESS"] }
+                   { pendingState ? (active == i? icons["PENDING"]: icons["SUCCESS"]) : (stepsIcons[i + 1] || i + 1)}
                   </Text>
                 ) : (
                   <Text

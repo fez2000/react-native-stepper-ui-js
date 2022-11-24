@@ -1,6 +1,6 @@
 {
   "name": "react-native-stepper-ui-js",
-  "version": "0.0.0",
+  "version": "0.1.1",
   "description": "Stepper Component for React Native",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -76,7 +76,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "yarn lint " 
+      "pre-commit": "yarn lint "
     }
   },
   "commitlint": {
